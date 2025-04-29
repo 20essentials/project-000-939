@@ -1,0 +1,531 @@
+---
+import { getSession } from 'auth-astro/server';
+---
+
+<button class='button' id='login'>
+  <div class='bg'></div>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 342 208'
+    height='208'
+    width='342'
+    class='splash'
+  >
+    <path
+      stroke-linecap='round'
+      stroke-width='3'
+      d='M50.8 100.5C50.8 100.5 38.5 93.2 25.3 99.8C12.1 106.4 2.5 100.5 2.5 100.5'
+    ></path>
+    <path
+      stroke-linecap='round'
+      stroke-width='3'
+      d='M292.3 100.5C292.3 100.5 304.6 93.2 317.8 99.8C331 106.4 339.5 97.8 339.5 97.8'
+    ></path>
+    <path
+      stroke-linecap='round'
+      stroke-width='3'
+      stroke-opacity='0.35'
+      d='M280.2 66.8C280.2 66.8 287.5 52.3 301.5 51.2C315.5 50.1 317.8 40.8 317.8 40.8'
+    ></path>
+    <path
+      stroke-linecap='round'
+      stroke-width='3'
+      stroke-opacity='0.35'
+      d='M280.2 143.2C280.2 143.2 287.5 157.7 301.5 158.8C315.5 159.9 317.8 169.2 317.8 169.2'
+    ></path>
+    <path
+      stroke-linecap='round'
+      stroke-width='3'
+      d='M228.5 59.2C228.5 59.2 223.8 44.8 233.5 34.2C243.2 23.6 241.5 17.8 241.5 17.8'
+    ></path>
+    <path
+      stroke-linecap='round'
+      stroke-width='3'
+      d='M228.5 151.8C228.5 151.8 223.8 166.2 233.5 176.8C243.2 187.4 241.5 193.2 241.5 193.2'
+    ></path>
+  </svg>
+
+  <div class='wrap'>
+    <svg
+      class='path'
+      width='221'
+      height='42'
+      viewBox='0 0 221 42'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        d='M182.674 2H203C211.837 2 219 9.16344 219 18V24C219 32.8366 211.837 40 203 40H18C9.16345 40 2 32.8366 2 24V18C2 9.16344 9.16344 2 18 2H47.8855'
+        stroke-width='3'
+        stroke-linecap='round'></path>
+    </svg>
+
+    <div class='outline'></div>
+    <div class='content'>
+      <span class='char state-1'>
+        <span style='--i: 1' data-label='S'>S</span>
+        <span style='--i: 2' data-label='i'>i</span>
+        <span style='--i: 3' data-label='g'>g</span>
+        <span style='--i: 4' data-label='n'>n</span>
+        <span style='--i: 5' data-label='U'>U</span>
+        <span style='--i: 6' data-label='p'>p</span>
+      </span>
+
+      <div class='icon'>
+        <div></div>
+      </div>
+
+      <span class='char state-2'>
+        <span style='--i: 1' data-label='R'>R</span>
+        <span style='--i: 2' data-label='e'>e</span>
+        <span style='--i: 3' data-label='g'>g</span>
+        <span style='--i: 4' data-label='i'>i</span>
+        <span style='--i: 5' data-label='s'>s</span>
+        <span style='--i: 6' data-label='t'>t</span>
+        <span style='--i: 7' data-label='e'>e</span>
+        <span style='--i: 8' data-label='r'>r</span>
+      </span>
+    </div>
+  </div>
+</button>
+
+<script>
+  const $ = (el: string) => document.querySelector(el);
+  const { signIn } = await import('auth-astro/client');
+  const $buttonLogin = $('#login') as HTMLButtonElement;
+  $buttonLogin.onclick = () => signIn('twitch');
+
+</script>
+
+<style>
+  .button {
+    --white: #e6fff2;
+    --green-100: #b1fdd4;
+    --green-200: #90ffc2;
+    --green-300: #89f2b8;
+    --green-400: #26e268;
+    --green-500: #2b8345;
+    --radius: 1.2vmax;
+    border-radius: var(--radius);
+    outline: none;
+    cursor: pointer;
+    font-size: 1.8vmax;
+    font-family: Arial;
+    background: transparent;
+    border: 0;
+    position: relative;
+    width: 14.5vmax;
+    min-height: 5.3vmax;
+    transform: rotate(355deg) skewX(3deg);
+    margin-inline: auto;
+    text-decoration: none;
+
+    .bg {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      filter: blur(0.01vmax);
+
+      .bg::before {
+        filter: blur(0.5vmax);
+        transition: all 0.3s ease;
+        box-shadow:
+          -0.7vmax 0.6vmax 0 0 rgb(75 155 95 / 40%),
+          -1.4vmax 1.2vmax 0 0 rgb(75 155 95 / 30%),
+          -2.1vmax 1.8vmax 0.4vmax 0 rgb(75 155 95 / 25%),
+          -2.8vmax 2.4vmax 0.8vmax 0 rgb(75 155 95 / 15%),
+          -3.5vmax 3vmax 1.2vmax 0 rgb(75 155 95 / 12%),
+          -4.2vmax 3.6vmax 1.6vmax 0 rgb(75 155 95 / 8%),
+          -5.6vmax 4.2vmax 2vmax 0 rgb(75 155 95 / 5%);
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: calc(var(--radius) * 1.1);
+        background: var(--green-500);
+        filter: blur(0.2vmax);
+      }
+    }
+  }
+
+  .wrap {
+    border-radius: inherit;
+    overflow: hidden;
+    height: 100%;
+    transform: translate(0.5vmax, -0.5vmax);
+    padding: 0.2vmax;
+    background: linear-gradient(
+      to bottom,
+      var(--green-100) 0%,
+      var(--green-400) 100%
+    );
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .outline {
+    position: absolute;
+    overflow: hidden;
+    inset: 0;
+    opacity: 0;
+    outline: none;
+    border-radius: inherit;
+    transition: all 0.4s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0.02vmax;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        white 50%,
+        transparent 100%
+      );
+      animation: spin 3s linear infinite;
+      animation-play-state: paused;
+    }
+  }
+
+  .content {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    position: relative;
+    height: 100%;
+    gap: 1vmax;
+    border-radius: calc(var(--radius) * 0.85);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: linear-gradient(
+      to bottom,
+      var(--green-300) 0%,
+      var(--green-400) 100%
+    );
+    box-shadow:
+      inset -0.2vmax 1.2vmax 1.1vmax -0.5vmax var(--green-200),
+      inset 0.1vmax -0.3vmax 1.1vmax 0vmax rgb(0 0 0 / 35%);
+
+    &::before {
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: 10;
+      width: 80%;
+      top: 45%;
+      bottom: 35%;
+      opacity: 0.7;
+      margin: auto;
+      background: linear-gradient(to bottom, transparent, var(--green-400));
+      filter: brightness(1.3) blur(0.4vmax);
+    }
+  }
+
+  .char {
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .char span {
+    display: block;
+    color: transparent;
+    position: relative;
+  }
+
+  .char.state-1 span {
+    animation: charAppear 1.2s ease backwards calc(var(--i) * 0.03s);
+  }
+
+  .char.state-1 span::before,
+  .char span::after {
+    content: attr(data-label);
+    position: absolute;
+    color: var(--white);
+    text-shadow: -0.1vmax 0.1vmax 0.2vmax var(--green-500);
+    left: 0;
+  }
+
+  .char span::before {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  .char.state-2 {
+    position: absolute;
+    left: 5vmax;
+  }
+
+  .char.state-2 span::after {
+    opacity: 1;
+  }
+
+  .icon {
+    animation: resetArrow 0.8s cubic-bezier(0.7, -0.5, 0.3, 1.2) forwards;
+    z-index: 10;
+  }
+
+  .icon div,
+  .icon div::before,
+  .icon div::after {
+    height: 0.3vmax;
+    border-radius: 0.1vmax;
+    background-color: var(--white);
+  }
+
+  .icon div::before,
+  .icon div::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    transform-origin: center right;
+    width: 1vmax;
+    border-radius: 1vmax;
+    transition: all 0.3s ease;
+  }
+
+  .icon div {
+    position: relative;
+    width: 1.4vmax;
+    box-shadow: -0.2vmax 0.2vmax 0.5vmax var(--green-400);
+    transform: scale(0.9);
+    background: linear-gradient(to bottom, var(--white), var(--green-100));
+    animation: swingArrow 1s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+
+  .icon div::before {
+    transform: rotate(44deg);
+    top: 0.1vmax;
+    box-shadow: 0.1vmax -0.2vmax 0.3vmax -0.1vmax var(--green-400);
+    animation: rotateArrowLine 1s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .icon div::after {
+    bottom: 0.1vmax;
+    transform: rotate(316deg);
+    box-shadow: -0.2vmax 0.2vmax 0.3vmax 0 var(--green-400);
+    background: linear-gradient(200deg, var(--white), var(--green-100));
+    animation: rotateArrowLine2 1s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .path {
+    position: absolute;
+    z-index: 12;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    pointer-events: none;
+  }
+
+  .splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    stroke-dasharray: 60 60;
+    stroke-dashoffset: 60;
+    transform: translate(-16%, -32%);
+    stroke: var(--green-300);
+  }
+
+  .button:hover .words {
+    opacity: 1;
+  }
+  .button:hover .words span {
+    animation-play-state: running;
+  }
+
+  .button:hover .char.state-1 span::before {
+    animation: charAppear 0.7s ease calc(var(--i) * 0.03s);
+  }
+
+  .button:hover .char.state-1 span::after {
+    opacity: 1;
+    animation: charDisappear 0.7s ease calc(var(--i) * 0.03s);
+  }
+
+  .button:hover .wrap {
+    transform: translate(0.4vmax, -0.4vmax);
+  }
+
+  .button:hover .outline {
+    opacity: 1;
+  }
+
+  .button:hover .outline::before,
+  .button:hover .icon div::before,
+  .button:hover .icon div::after,
+  .button:hover .icon div {
+    animation-play-state: running;
+  }
+
+  .button:active .bg::before {
+    filter: blur(0.4vmax);
+    opacity: 0.7;
+    box-shadow:
+      -0.7vmax 0.6vmax 0 0 rgb(75 155 95 / 40%),
+      -1.4vmax 1.2vmax 0 0 rgb(75 155 95 / 25%),
+      -2.1vmax 1.8vmax 0.4vmax 0 rgb(75 155 95 / 15%);
+  }
+
+  .button:active .content {
+    box-shadow:
+      inset -0.1vmax 1.2vmax 0.8vmax -0.5vmax rgba(0, 137, 71, 0.4),
+      inset 0vmax -0.3vmax 0.8vmax 0vmax var(--green-200);
+  }
+
+  .button:active .words,
+  .button:active .outline {
+    opacity: 0;
+  }
+
+  .button:active .wrap {
+    transform: translate(0.1vmax, -0.1vmax);
+  }
+
+  .button:active .splash {
+    animation: splash 0.8s cubic-bezier(0.3, 0, 0, 1) forwards 0.05s;
+  }
+
+  .button:focus .path {
+    animation: path 1.6s ease forwards 0.2s;
+  }
+
+  .button:focus .icon {
+    animation: arrow 1s cubic-bezier(0.7, -0.5, 0.3, 1.5) forwards;
+  }
+
+  .char.state-2 span::after,
+  .button:focus .char.state-1 span {
+    animation: charDisappear 0.5s ease forwards calc(var(--i) * 0.03s);
+  }
+
+  .button:focus .char.state-2 span::after {
+    animation: charAppear 1s ease backwards calc(var(--i) * 0.03s);
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes charAppear {
+    0% {
+      transform: translateY(50%);
+      opacity: 0;
+      filter: blur(0.4vmax);
+    }
+    20% {
+      transform: translateY(70%);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-15%);
+      opacity: 1;
+      filter: blur(0);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes charDisappear {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-70%);
+      opacity: 0;
+      filter: blur(0.3vmax);
+    }
+  }
+
+  @keyframes arrow {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(6vmax);
+      opacity: 0;
+    }
+    51% {
+      transform: translateX(-10vmax);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-8vmax);
+      opacity: 1;
+    }
+  }
+
+  @keyframes swingArrow {
+    50% {
+      transform: translateX(0.3vmax) scale(0.9);
+    }
+  }
+
+  @keyframes rotateArrowLine {
+    50% {
+      transform: rotate(30deg);
+    }
+    80% {
+      transform: rotate(55deg);
+    }
+  }
+
+  @keyframes rotateArrowLine2 {
+    50% {
+      transform: rotate(330deg);
+    }
+    80% {
+      transform: rotate(300deg);
+    }
+  }
+
+  @keyframes resetArrow {
+    0% {
+      transform: translateX(-8vmax);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes path {
+    from {
+      stroke: white;
+    }
+    to {
+      stroke-dashoffset: -480;
+      stroke: #c6fee0;
+    }
+  }
+
+  @keyframes splash {
+    to {
+      stroke-dasharray: 2 60;
+      stroke-dashoffset: -60;
+    }
+  }
+</style>

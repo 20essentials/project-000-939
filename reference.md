@@ -1,0 +1,5 @@
+- **Reference / Inspiration ⬇️**
+  - [Botón de diseño — Licencia MIT, por Marcelo Dolza (marcelodolza](https://uiverse.io/chase2k25/evil-wombat-55)
+  - [Wallpapers Images](https://wallhaven.cc/)
+  - [Switch Button - Licencia Mit, por NawSome](https://uiverse.io/Nawsome/empty-snail-69)
+  - [text](link)

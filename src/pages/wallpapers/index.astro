@@ -1,0 +1,101 @@
+---
+import Data from '@/data/wallpapers.json';
+import Layout from '@/layouts/Layout.astro';
+import 'photoswipe/style.css';
+---
+
+<Layout>
+  <main class="total">
+    <h1 transition:name='titulo-h2'>
+      20 WALLPAPERS <img src='/assets/wallpaper.png' alt='wallpaper' />
+    </h1>
+    <section class='container' id="gallery--individual">
+      {
+        Data.map(({ localImage }, i) => {
+          return (
+            <aside class='card'>
+              <a href={localImage} data-pswp-src={localImage} data-pswp-width="1920" data-pswp-height="1080" data-pswp-caption={`Imagen ${i + 1}`}>
+                <img src={localImage} alt={`Image ${i}`} />
+              </a>
+            </aside>
+          );
+        })
+      }
+    </section>
+  </main>
+</Layout>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/dist/photoswipe.css';
+
+  const options = {
+    gallery: '#gallery--individual a',
+    pswpModule: () => import('photoswipe'),
+    captionEl: true,
+    arrows: true,
+    index: 0
+  };
+
+  const lightbox = new PhotoSwipeLightbox(options);
+  lightbox.init();
+
+  document.querySelectorAll('#gallery--individual a').forEach((el, index) => {
+    el.addEventListener('click', () => {
+      options.index = index;
+    });
+  });
+</script>
+
+
+
+<style>
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 5vmax;
+    text-align: center;
+    text-wrap: balance;
+    color: transparent;
+    background-image: var(--gradient-btn);
+    background-clip: text;
+    animation: fadeIn 1s ease-in-out;
+
+    img {
+      width: 4vmax;
+    }
+  }
+
+  .container {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17vmax, 1fr));
+    gap: 2vmax;
+    padding: 2vmax;
+    place-content: center;
+
+    .card {
+      min-width: 16vw;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

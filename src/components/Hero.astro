@@ -1,0 +1,21 @@
+---
+import ButtonTwitch from './ButtonTwitch.astro';
+import Title from './Title.astro';
+---
+
+<section>
+  <Title />
+  <ButtonTwitch />
+</section>
+
+<style>
+  section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-content: center;
+    gap: 2vmax;
+    overflow: hidden;
+  }
+</style>

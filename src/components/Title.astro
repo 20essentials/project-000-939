@@ -1,0 +1,28 @@
+<h1 transition:name='titulo-h2'  >
+  20 WALLPAPERS <img src='/assets/wallpaper.png' alt='wallpaper' />
+</h1>
+
+<style>
+  h1 {
+    font-size: 5vmax;
+    text-align: center;
+    text-wrap: balance;
+    color: transparent;
+    background-image: var(--gradient-btn);
+    background-clip: text;
+    animation: fadeIn 1s esase-in-out;
+
+    img {
+      width: 4vmax;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
