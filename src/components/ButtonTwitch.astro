@@ -90,7 +90,10 @@
   const $ = (el: string) => document.querySelector(el);
   const { signIn } = await import('auth-astro/client');
   const $buttonLogin = $('#login') as HTMLButtonElement;
-  $buttonLogin.onclick = () => signIn('twitch');
+  $buttonLogin.onclick = () =>
+    signIn('twitch', {
+      callbackUrl: '/'
+    });
 </script>
 
 <style>
