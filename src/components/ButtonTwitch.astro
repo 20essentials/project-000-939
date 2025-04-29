@@ -1,7 +1,3 @@
----
-import { getSession } from 'auth-astro/server';
----
-
 <button class='button' id='login'>
   <div class='bg'></div>
   <svg
@@ -95,7 +91,6 @@ import { getSession } from 'auth-astro/server';
   const { signIn } = await import('auth-astro/client');
   const $buttonLogin = $('#login') as HTMLButtonElement;
   $buttonLogin.onclick = () => signIn('twitch');
-
 </script>
 
 <style>

@@ -3,10 +3,13 @@ import Data from '@/data/wallpapers.json';
 import Layout from '@/layouts/Layout.astro';
 import 'photoswipe/style.css';
 import LogoutButton from './LogoutButton.astro';
+import { getSession } from 'auth-astro/server';
+const session = await getSession(Astro.request);
 ---
 
 <Layout>
   <main class='total'>
+    <img class='logo-user' src={session?.user?.image} alt='User logo' />
     <h1 transition:name='titulo-h2'>
       20 WALLPAPERS <img src='/assets/wallpaper.png' alt='wallpaper' />
     </h1>
@@ -37,22 +40,23 @@ import LogoutButton from './LogoutButton.astro';
   import PhotoSwipeLightbox from 'photoswipe/lightbox';
   import 'photoswipe/dist/photoswipe.css';
 
-  const options = {
-    gallery: '#gallery--individual a',
-    pswpModule: () => import('photoswipe'),
-    captionEl: true,
-    arrows: true,
-    index: 0
-  };
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery--individual',
+    children: 'a',
+    pswpModule: () => import('photoswipe')
+  });
 
-  const lightbox = new PhotoSwipeLightbox(options);
-  lightbox.init();
-
-  document.querySelectorAll('#gallery--individual a').forEach((el, index) => {
-    el.addEventListener('click', () => {
-      options.index = index;
+  lightbox.on('uiRegister', function () {
+    lightbox?.pswp?.ui?.registerElement({
+      name: 'custom-counter',
+      order: 9,
+      isButton: false,
+      appendTo: 'bar',
+      html: ''
     });
   });
+
+  lightbox.init();
 </script>
 
 <style>
@@ -62,6 +66,16 @@ import LogoutButton from './LogoutButton.astro';
     flex-direction: column;
   }
 
+  /* .u */
+
+  .logo-user {
+    position: absolute;
+    width: 5.6vmax;
+    height: 5.6vmax;
+    top: 1.5vmax;
+    left: 2vmax;
+    border-radius: 50%;
+  }
 
   h1 {
     font-size: 5vmax;
