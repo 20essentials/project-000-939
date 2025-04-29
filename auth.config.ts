@@ -7,7 +7,7 @@ export default defineConfig({
 		Twitch({
 			clientId: import.meta.env.TWITCH_CLIENT_ID,
 			clientSecret: import.meta.env.TWITCH_CLIENT_SECRET,
-      callbackUrl: 'https://project-000-939.vercel.app/'
+      callbackUrl: '/'
 		}),
 	],
 })
