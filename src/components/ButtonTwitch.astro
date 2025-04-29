@@ -91,9 +91,7 @@
   const { signIn } = await import('auth-astro/client');
   const $buttonLogin = $('#login') as HTMLButtonElement;
   $buttonLogin.onclick = () =>
-    signIn('twitch', {
-      callbackUrl: '/'
-    });
+    signIn('twitch');
 </script>
 
 <style>
